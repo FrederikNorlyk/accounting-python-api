@@ -15,3 +15,4 @@ python3 manage.py migrate
 python3 manage.py createsuperuser
 python3 manage.py runserver
 ```
+You don't need to deploy the frontend application in order to try out the API, as it has its own web interface. Just open http://localhost:8000/ in your browser.
