@@ -7,7 +7,7 @@ from accounting.models.merchant import Merchant
 
 
 class MerchantViewSet(viewsets.ModelViewSet):
-    queryset = Merchant.objects.all();
+    queryset = Merchant.objects.all().order_by("name");
     serializer_class = MerchantSerializer
     permission_classes = [permissions.IsAuthenticated, IsOwner]
 
