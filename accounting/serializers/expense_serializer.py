@@ -8,7 +8,9 @@ class ExpenseSerializer(serializers.HyperlinkedModelSerializer):
     user = serializers.ReadOnlyField(source="user.id")
     project = serializers.PrimaryKeyRelatedField(many=False, queryset=Project.objects.all())
     merchant = serializers.PrimaryKeyRelatedField(many=False, queryset=Merchant.objects.all())
+    project_name = serializers.CharField(source="project.name", read_only=True)
+    merchant_name = serializers.CharField(source="merchant.name", read_only=True)
 
     class Meta:
         model = Expense
-        fields = ['id', 'date', 'note', 'amount', 'details', 'project', 'merchant', 'user', 'url']
+        fields = ['id', 'date', 'note', 'amount', 'details', 'project', 'project_name', 'merchant', 'merchant_name', 'user', 'url']
