@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "accounting-api"
+version = "0.1.0"
+description = "Simple API for an accounting application, built using the Python framework Django."
+authors = ["Frederik Norlyk <frederiknorlyk@gmail.com>"]
+readme = "README.md"
+packages = [{include = "accounting_api"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.2.1"
+dj-database-url = "^2.0.0"
+psycopg2-binary = "^2.9.6"
+whitenoise = {extras = ["brotli"], version = "^6.4.0"}
+gunicorn = "^20.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
