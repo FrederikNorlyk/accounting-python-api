@@ -1,12 +1,14 @@
 databases:
   - name: accounting-db
     plan: free
+    region: frankfurt
     databaseName: accounting
     user: frederik
 
 services:
   - type: web
     plan: free
+    region: frankfurt
     name: accounting-api
     env: python
     buildCommand: "./build.sh"
