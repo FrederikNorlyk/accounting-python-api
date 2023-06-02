@@ -10,6 +10,8 @@ In an attempt to learn Python and React I started working on this version. The A
 ### Try it out!
 In a terminal navigate to the source code and run the following commands
 ```
+poetry install
+pip install -r requirements.txt
 python3 manage.py makemigrations accounting
 python3 manage.py migrate
 python3 manage.py createsuperuser
