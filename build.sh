@@ -2,7 +2,7 @@
 # exit on error
 set -o errexit
 
-echo poetry --version
+poetry --version
 poetry install
 
 python manage.py collectstatic --no-input
