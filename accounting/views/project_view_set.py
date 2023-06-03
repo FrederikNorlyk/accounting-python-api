@@ -7,9 +7,13 @@ from accounting.models.project import Project
 
 
 class ProjectViewSet(viewsets.ModelViewSet):
-    queryset = Project.objects.all().order_by("name");
     serializer_class = ProjectSerializer
     permission_classes = [permissions.IsAuthenticated, IsOwner]
+
+
+    def get_queryset(self):
+        user_id = self.request.user.id
+        return Project.objects.filter(user_id=user_id).order_by("name")
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

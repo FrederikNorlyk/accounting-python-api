@@ -7,9 +7,14 @@ from accounting.models.expense import Expense
 
 
 class ExpenseViewSet(viewsets.ModelViewSet):
-    queryset = Expense.objects.all().order_by("-date");
     serializer_class = ExpenseSerializer
     permission_classes = [permissions.IsAuthenticated, IsOwner]
+
+
+    def get_queryset(self):
+        user_id = self.request.user.id
+        return Expense.objects.filter(user_id=user_id).order_by("-date")
+
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

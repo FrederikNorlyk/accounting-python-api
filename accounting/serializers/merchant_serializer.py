@@ -4,7 +4,7 @@ from accounting.models.merchant import Merchant
 
 
 class MerchantSerializer(serializers.HyperlinkedModelSerializer):
-    user = serializers.ReadOnlyField(source="user.username")
+    user = serializers.ReadOnlyField(source="user.id")
 
     class Meta:
         model = Merchant

@@ -7,9 +7,13 @@ from accounting.models.merchant import Merchant
 
 
 class MerchantViewSet(viewsets.ModelViewSet):
-    queryset = Merchant.objects.all().order_by("name");
     serializer_class = MerchantSerializer
     permission_classes = [permissions.IsAuthenticated, IsOwner]
+
+
+    def get_queryset(self):
+        user_id = self.request.user.id
+        return Merchant.objects.filter(user_id=user_id).order_by("name")
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
