@@ -24,3 +24,5 @@ services:
         value: 4
       - key: PYTHON_VERSION
         value: 3.10.6
+      - key: CORS_ORIGIN
+        value: TODO

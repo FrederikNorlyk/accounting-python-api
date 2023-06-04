@@ -146,13 +146,23 @@ if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
+if ('RENDER' in os.environ) :
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CORS_ORIGIN')
+    ]
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",
-]
+    CSRF_TRUSTED_ORIGINS = [
+        os.environ.get('CORS_ORIGIN')
+    ]
+else :
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:3000",
+    ]
+
+    CSRF_TRUSTED_ORIGINS = [
+        "http://localhost:3000",
+    ]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
