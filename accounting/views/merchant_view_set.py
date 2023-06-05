@@ -1,7 +1,9 @@
+from django.db import IntegrityError
 from rest_framework import viewsets
 from rest_framework import permissions
-from accounting.permissions.is_owner import IsOwner
+from rest_framework.exceptions import ValidationError
 
+from accounting.permissions.is_owner import IsOwner
 from accounting.serializers.merchant_serializer import MerchantSerializer
 from accounting.models.merchant import Merchant
 
@@ -16,5 +18,13 @@ class MerchantViewSet(viewsets.ModelViewSet):
         return Merchant.objects.filter(user_id=user_id).order_by("name")
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        try:
+            serializer.save(user=self.request.user)
+        except IntegrityError:
+            raise ValidationError({'detail': 'A merchant with that name already exists'})
     
+    def perform_update(self, serializer):
+        try:
+            return super().perform_update(serializer)
+        except IntegrityError:
+            raise ValidationError({'detail': 'A merchant with that name already exists'})
