@@ -9,7 +9,7 @@ class Expense(models.Model):
     date = models.DateTimeField()
     amount = models.DecimalField(max_digits=8, decimal_places=2)
     note = models.TextField()
-    details = models.TextField()
+    details = models.TextField(null=True)
     project = models.ForeignKey(Project, related_name=_related_name, on_delete=models.SET_NULL, null=True)
     merchant = models.ForeignKey(Merchant, related_name=_related_name, on_delete=models.SET_NULL, null=True)
     user = models.ForeignKey("auth.User", related_name=_related_name, on_delete=models.CASCADE, null=True)
