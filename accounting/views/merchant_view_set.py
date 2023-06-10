@@ -15,7 +15,13 @@ class MerchantViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user_id = self.request.user.id
-        return Merchant.objects.filter(user_id=user_id).order_by("name")
+        sort_field = self.request.query_params.get('sortField', "name")
+        sort_dir: str = self.request.query_params.get('sortDir', "")
+
+        sort = sort_dir = "" if sort_dir == "ASC" else "-"
+        sort += sort_field
+
+        return Merchant.objects.filter(user_id=user_id).order_by(sort)
 
     def perform_create(self, serializer):
         try:

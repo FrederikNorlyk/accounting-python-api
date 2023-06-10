@@ -1,6 +1,5 @@
 from django.urls import include, path
 from rest_framework import routers
-from rest_framework.authtoken import views as authviews
 from accounting.auth.custom_auth_token import CustomAuthToken
 
 from accounting.views.expense_view_set import ExpenseViewSet
