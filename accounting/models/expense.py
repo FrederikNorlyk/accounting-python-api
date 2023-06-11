@@ -15,4 +15,4 @@ class Expense(models.Model):
     user = models.ForeignKey("auth.User", related_name=_related_name, on_delete=models.CASCADE, null=True)
 
     def __str__(self) -> str:
-        return self.note
+        return f'{self.date} - {self.note} - {self.amount} - p:{self.project} - m:{self.merchant} - u:{self.user}'
