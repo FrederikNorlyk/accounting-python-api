@@ -12,6 +12,9 @@ The application is modeled on an old PHP project, that I wrote to keep track of 
 In an attempt to learn Python and React I started working on this application. The API is the Python side of that attempt. Check out my other repository [accounting-react-frontend](https://github.com/FrederikNorlyk/accounting-react-frontend) which covers the React part.
 
 ### Try it out!
+The project is hosted [here on Render](https://accounting-api-42y3.onrender.com). Beware that it is running on their free tier which is quite slow. The first time you visit the address, Render will spin up the server, so please be patient. When creating a new user some random demo data is generated.
+
+### Run it yourself ###
 In a terminal, navigate to the root directory and run the following commands
 ```
 poetry install
