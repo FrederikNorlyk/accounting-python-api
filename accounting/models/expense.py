@@ -12,7 +12,7 @@ class Expense(models.Model):
     details = models.TextField(null=True)
     project = models.ForeignKey(Project, related_name=_related_name, on_delete=models.SET_NULL, null=True)
     merchant = models.ForeignKey(Merchant, related_name=_related_name, on_delete=models.SET_NULL, null=True)
-    user = models.ForeignKey("auth.User", related_name=_related_name, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey("auth.User", related_name=_related_name, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return f'{self.date} - {self.note} - {self.amount} - p:{self.project} - m:{self.merchant} - u:{self.user}'
