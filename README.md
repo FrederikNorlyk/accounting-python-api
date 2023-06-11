@@ -16,7 +16,6 @@ In a terminal, navigate to the root directory and run the following commands
 ```
 poetry install
 pip install -r requirements.txt
-python3 manage.py makemigrations accounting
 python3 manage.py migrate
 python3 manage.py createsuperuser
 python3 manage.py runserver
